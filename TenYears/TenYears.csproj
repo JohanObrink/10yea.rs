@@ -93,7 +93,6 @@
     <Compile Include="Services\MongoServices\MongoPersonService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\stylesheet.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
