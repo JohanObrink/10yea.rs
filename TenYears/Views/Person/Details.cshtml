@@ -1,0 +1,36 @@
+﻿@model TenYears.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<article>
+    <h1>@Model.Testimonial.Headline</h1>
+
+    <p class="testimonial">
+        @Html.Raw(Model.Testimonial.Text.Replace(Environment.NewLine, "<br />"))
+        <br />
+        --------------------------------------------
+        <br />
+        This whole time, Dawit Isaak has been locked up in an Eritrean prison cell without a trial or even official charges.<br />
+        <br />
+        He has no mattress or pillow.<br />
+        He isn't allowed visitors.<br />
+        He has been subjected to torture.<br />
+        <br />
+        And all this just because he is a journalist.
+    </p>
+
+    <img alt="@Model.Name" src="@Model.Photo" />
+
+    <ol>
+    @foreach (var evt in Model.Events)
+    {
+        <li data-date="@evt.Date">
+            <strong>@evt.DateHeadline</strong>
+            <div>@evt.Text</div>
+            @if(evt.Image != null) { <img alt="@evt.DateHeadline" src="@evt.Image" /> }
+        </li>
+    }
+    </ol>
+</article>
