@@ -93,7 +93,6 @@
     <Compile Include="Services\MongoServices\MongoPersonService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\junction_02-webfont.svg" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -140,10 +139,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Content\junction_02-webfont.eot" />
-    <None Include="Content\junction_02-webfont.woff" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
