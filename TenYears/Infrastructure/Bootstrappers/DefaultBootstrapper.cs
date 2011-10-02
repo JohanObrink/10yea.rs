@@ -25,9 +25,10 @@ namespace TenYears.Infrastructure.Bootstrappers
                 x.For<ITimelineService>().HttpContextScoped().Use<MongoTimelineService>();
 
                 x.For<MongoDatabase>().HttpContextScoped().Use(() => {
-                    var server = MongoServer.Create(ConfigurationManager.AppSettings["MONGOHQ_URL"]);
+                    var connectionString = ConfigurationManager.AppSettings["MONGOHQ_URL"];
+                    var server = MongoServer.Create(connectionString);
 
-                    return server.GetDatabase("10years");
+                    return server.GetDatabase(connectionString.Substring(connectionString.LastIndexOf("/") +1);
                 });
             });
         }
