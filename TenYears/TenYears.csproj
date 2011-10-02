@@ -86,6 +86,7 @@
     <Compile Include="Infrastructure\AppStart\AppStart_MongoDB.cs" />
     <Compile Include="Infrastructure\AppStart\AppStart_Structuremap.cs" />
     <Compile Include="Infrastructure\Bootstrappers\DefaultBootstrapper.cs" />
+    <Compile Include="Infrastructure\Filters\TracingHandleErrorAttribute.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\SocialNetworks.cs" />
     <Compile Include="Models\Testimonial.cs" />
