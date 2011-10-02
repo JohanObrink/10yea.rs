@@ -1,0 +1,28 @@
+﻿@model TenYears.Models.TimelineEvent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TimelineEvent</legend>
+
+    <div class="display-label">Date</div>
+    <div class="display-field">@String.Format("{0:dddd, MMMM d, yyyy}", Model.Date.ToLocalTime())</div>
+
+    <div class="display-label">DateHeadline</div>
+    <div class="display-field">@Model.DateHeadline</div>
+
+    <div class="display-label">Text</div>
+    <div class="display-field">@Model.Text</div>
+
+    <div class="display-label">Image</div>
+    <div class="display-field">@Model.Image</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

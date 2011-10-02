@@ -33,8 +33,7 @@ I moved three times.
 I went from The Bearded Lady to Paradiset DDB and then started Man Machine which I then sold to 24HR where I remain.
 
 I switched from Altavista to Google."
-                },
-                Events = new List<TimelineEvent>()
+                }
             };
 
             return View("details", person);

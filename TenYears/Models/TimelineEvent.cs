@@ -11,6 +11,11 @@ namespace TenYears.Models
     public class TimelineEvent
     {
         /// <summary>
+        /// The Id is used for identifying the event. Duh!
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// When it happened
         /// </summary>
         public DateTime Date { get; set; }

@@ -6,8 +6,7 @@ using TenYears.Infrastructure.Bootstrappers;
 using System.Web.Mvc;
 using TenYears.Infrastructure.ControllerFactories;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(TenYears.Infrastructure.AppStart_Structuremap), "Start")]
-namespace TenYears.Infrastructure
+namespace TenYears.Infrastructure.AppStart
 {
     public static class AppStart_Structuremap
     {

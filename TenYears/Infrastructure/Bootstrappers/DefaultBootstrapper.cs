@@ -22,6 +22,7 @@ namespace TenYears.Infrastructure.Bootstrappers
             ObjectFactory.Initialize(x =>
             {
                 x.For<IPersonService>().HttpContextScoped().Use<MongoPersonService>();
+                x.For<ITimelineService>().HttpContextScoped().Use<MongoTimelineService>();
 
                 x.For<MongoDatabase>().HttpContextScoped().Use(() => {
                     var server = MongoServer.Create(ConfigurationManager.AppSettings["MONGOHQ_URL"]);

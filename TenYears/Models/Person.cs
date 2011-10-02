@@ -36,11 +36,6 @@ namespace TenYears.Models
         public Testimonial Testimonial { get; set; }
 
         /// <summary>
-        /// My timeline
-        /// </summary>
-        public IEnumerable<TimelineEvent> Events { get; set; }
-
-        /// <summary>
         /// My id on Facebook
         /// </summary>
         public string FacebookId { get; set; }
