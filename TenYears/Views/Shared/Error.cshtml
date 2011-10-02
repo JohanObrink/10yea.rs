@@ -1,4 +1,5 @@
-﻿@{
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
     Layout = null;
 }
 
@@ -8,8 +9,20 @@
     <title>Error</title>
 </head>
 <body>
-    <h2>
-        Sorry, an error occurred while processing your request.
-    </h2>
+    <h1>
+       Oh no!!! An Error occured!!! What are we going to do???
+    </h1>
+    <p>
+        <b>Controller:</b> @Model.ControllerName
+    </p>
+    <p>
+        <b>Action:</b> @Model.ActionName
+    </p>
+    <p>
+        <b>Message:</b> @Model.Exception.Message
+    </p>
+    <pre>
+        @Model.Exception.StackTrace
+    </pew>
 </body>
 </html>

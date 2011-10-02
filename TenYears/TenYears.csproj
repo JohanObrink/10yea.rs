@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
     <Compile Include="Global.asax.cs">
@@ -86,7 +87,6 @@
     <Compile Include="Infrastructure\AppStart\AppStart_MongoDB.cs" />
     <Compile Include="Infrastructure\AppStart\AppStart_Structuremap.cs" />
     <Compile Include="Infrastructure\Bootstrappers\DefaultBootstrapper.cs" />
-    <Compile Include="Infrastructure\Filters\TracingHandleErrorAttribute.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\SocialNetworks.cs" />
     <Compile Include="Models\Testimonial.cs" />

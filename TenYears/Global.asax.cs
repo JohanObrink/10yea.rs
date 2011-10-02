@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using TenYears.Infrastructure.Filters;
 
 namespace TenYears
 {
@@ -15,7 +14,11 @@ namespace TenYears
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute { 
+                ExceptionType = typeof(Exception),
+                Order = 1,
+                View = "Error"
+            });
         }
 
         public static void RegisterRoutes(RouteCollection routes)
