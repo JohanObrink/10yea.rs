@@ -51,7 +51,7 @@ namespace TenYears.Controllers
                 // TODO: Add insert logic here
                 timelineEvent = timelineService.Save(timelineEvent);
 
-                return RedirectToAction("Details", new { id = timelineEvent.Id });
+                return RedirectToAction("Index");
             }
             catch(Exception ex)
             {
