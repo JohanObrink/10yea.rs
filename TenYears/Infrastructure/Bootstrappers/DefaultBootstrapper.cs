@@ -28,7 +28,7 @@ namespace TenYears.Infrastructure.Bootstrappers
                     var connectionString = ConfigurationManager.AppSettings["MONGOHQ_URL"];
                     var server = MongoServer.Create(connectionString);
 
-                    return server.GetDatabase(connectionString.Substring(connectionString.LastIndexOf("/") +1);
+                    return server.GetDatabase(connectionString.Substring(connectionString.LastIndexOf("/") + 1));
                 });
             });
         }
