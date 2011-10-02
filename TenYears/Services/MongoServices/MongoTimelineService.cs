@@ -16,7 +16,6 @@ namespace TenYears.Services.MongoServices
     {
         public MongoTimelineService (MongoDatabase database) : base(database)
         {
-            throw new Exception("Amen bra ful du é 'rå!");
         }
 
         /// <summary>

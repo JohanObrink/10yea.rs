@@ -14,11 +14,7 @@ namespace TenYears
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute { 
-                ExceptionType = typeof(Exception),
-                Order = 1,
-                View = "Error"
-            });
+            filters.Add(new HandleErrorAttribute());
         }
 
         public static void RegisterRoutes(RouteCollection routes)
@@ -42,6 +38,26 @@ namespace TenYears
             RegisterRoutes(RouteTable.Routes);
 
 
+        }
+
+        protected void Application_Error()
+        {
+            var ex = Server.GetLastError();
+
+            Response.Clear();
+            Response.ContentType = "text/plain";
+            Response.StatusCode = 200;
+
+            var thisEx = ex;
+            while (thisEx != null)
+            {
+                Response.Write("== Message: " + Environment.NewLine + thisEx.Message + Environment.NewLine + Environment.NewLine);
+                thisEx = thisEx.InnerException;
+            }
+
+            Response.Write("== StackTrace:" + Environment.NewLine + ex.StackTrace);
+            Response.Flush();
+            Response.End();
         }
     }
 }
