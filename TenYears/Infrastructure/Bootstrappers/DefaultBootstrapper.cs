@@ -26,7 +26,7 @@ namespace TenYears.Infrastructure.Bootstrappers
 
                 x.For<MongoDatabase>().HttpContextScoped().Use(() => {
                     var server = MongoServer.Create(ConfigurationManager.AppSettings["MONGOHQ_URL"]);
-                    
+
                     return server.GetDatabase("10years");
                 });
             });
