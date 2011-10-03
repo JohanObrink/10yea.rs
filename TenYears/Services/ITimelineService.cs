@@ -9,32 +9,7 @@ namespace TenYears.Services
     /// <summary>
     /// Service for managing TimelineEvents
     /// </summary>
-    public interface ITimelineService
+    public interface ITimelineService : IServiceBase<TimelineEvent>
     {
-        /// <summary>
-        /// Retrieves a single TimelineEvent
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        TimelineEvent Get(string id);
-
-        /// <summary>
-        /// Retrieves all TimelineEvents sorted by Date
-        /// </summary>
-        /// <returns></returns>
-        IEnumerable<TimelineEvent> GetAll();
-
-        /// <summary>
-        /// Inserts or Updates a TimelineEvent
-        /// </summary>
-        /// <param name="timelineEvent"></param>
-        /// <returns></returns>
-        TimelineEvent Save(TimelineEvent timelineEvent);
-
-        /// <summary>
-        /// Deletes a TimelineEvent
-        /// </summary>
-        /// <param name="timelineEvent"></param>
-        void Delete(TimelineEvent timelineEvent);
     }
 }

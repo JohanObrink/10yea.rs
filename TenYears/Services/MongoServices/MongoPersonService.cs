@@ -8,27 +8,10 @@ using FluentMongo.Linq;
 
 namespace TenYears.Services.MongoServices
 {
-    public class MongoPersonService : IPersonService
+    public class MongoPersonService : AMongoServiceBase<Person>, IPersonService
     {
-        private readonly MongoDatabase database;
-
-        public MongoPersonService(MongoDatabase database)
+        public MongoPersonService(MongoDatabase database) : base(database)
         {
-            this.database = database;
-        }
-
-        /// <summary>
-        /// Get a person by his/her local id on 10yea.rs
-        /// Typically used for retrieving based on Url
-        /// </summary>
-        /// <param name="id">his/her 10yea.rs id</param>
-        /// <returns>A person (hopefully)</returns>
-        public Person Get(string id)
-        {
-            return database
-                .GetCollection<Person>("persons")
-                .AsQueryable()
-                .FirstOrDefault(x => x.Id == id);
         }
 
         /// <summary>
@@ -57,9 +40,8 @@ namespace TenYears.Services.MongoServices
                     throw new Exception("Impossible SocialNetwork Exception");
             }
 
-            return database
-                .GetCollection<Person>("persons")
-                .AsQueryable()
+            return Collection
+                .FindAll()
                 .FirstOrDefault(x => selector.Invoke(x) == remoteId);
         }
 
@@ -71,24 +53,9 @@ namespace TenYears.Services.MongoServices
         /// <returns>A list of persons with matching names</returns>
         public IEnumerable<Person> Search(string partOfName)
         {
-            return database
-                .GetCollection<Person>("persons")
-                .AsQueryable()
-                .Where(x => x.Name.ToLower().Contains(partOfName.ToLower()));
-        }
-
-        /// <summary>
-        /// Save a person with timeline and all
-        /// </summary>
-        /// <param name="person">The person to save</param>
-        /// <returns>The same person, possibly with an id added</returns>
-        public Person Save(Person person)
-        {
-            var result = database
-                .GetCollection<Person>("persons")
-                .Save(person);
-
-            return person;
+            return Collection
+                .FindAll()
+                .Where(x => x.Name.Contains(partOfName));
         }
     }
 }

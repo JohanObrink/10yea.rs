@@ -76,6 +76,27 @@ namespace TenYears.Controllers
         {
             try
             {
+                var file = Request.Files["file"];
+
+                if (file != null && file.FileName.EndsWith(".png") || file.FileName.EndsWith(".jpg"))
+                {
+                    var fullPath = Server.MapPath("/" + file.FileName);
+                    file.SaveAs(fullPath);
+
+                    var config = new Amazon.S3.AmazonS3Config {
+                        MaxErrorRetry = 0
+                    };
+                    var client = new Amazon.S3.AmazonS3Client("AKIAJTSDXO36LAHQEOJA", "+HW/vJzJ+XApMYhBzVtAYElxiEZIVw24NXTYBtiG", config);
+
+                    var req = new Amazon.S3.Model.PutObjectRequest {
+                        BucketName = "10years-dawitisaak",
+                        FilePath = fullPath
+                    };
+                    var res = client.PutObject(req);
+
+                    timelineEvent.Image = res.AmazonId2;
+                }
+
                 // TODO: Add update logic here
                 timelineEvent = timelineService.Save(timelineEvent);
 
@@ -83,6 +104,7 @@ namespace TenYears.Controllers
             }
             catch(Exception ex)
             {
+                throw ex;
                 ModelState.AddModelError("Could not Edit", ex);
                 return View(timelineEvent);
             }
@@ -105,7 +127,7 @@ namespace TenYears.Controllers
             try
             {
                 // TODO: Add delete logic here
-                timelineService.Delete(timelineEvent);
+                timelineService.Delete(timelineEvent.Id);
                 return RedirectToAction("Index");
             }
             catch(Exception ex)

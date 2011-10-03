@@ -18,44 +18,9 @@ namespace TenYears.Services.MongoServices
         {
         }
 
-        /// <summary>
-        /// Retrieves a single TimelineEvent
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public TimelineEvent Get(string id)
+        public override IEnumerable<TimelineEvent> GetAll()
         {
-            return Collection.FindOneByIdAs<TimelineEvent>(id);
-        }
-
-        /// <summary>
-        /// Retrieves all TimelineEvents sorted by Date
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<TimelineEvent> GetAll()
-        {
-            return Collection.FindAllAs<TimelineEvent>();
-        }
-
-        /// <summary>
-        /// Inserts or Updates a TimelineEvent
-        /// </summary>
-        /// <param name="timelineEvent"></param>
-        /// <returns></returns>
-        public TimelineEvent Save(TimelineEvent timelineEvent)
-        {
-            Collection.Save(timelineEvent);
-
-            return timelineEvent;
-        }
-
-        /// <summary>
-        /// Deletes a TimelineEvent
-        /// </summary>
-        /// <param name="timelineEvent"></param>
-        public void Delete(TimelineEvent timelineEvent)
-        {
-            Collection.Remove(Query.EQ("Id", timelineEvent.Id));
+            return base.GetAll().OrderBy(x => x.Date);
         }
     }
 }

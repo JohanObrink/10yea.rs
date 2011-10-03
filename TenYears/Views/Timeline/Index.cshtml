@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<TenYears.Models.TimelineEvent>
-
+@using TenYears.Infrastructure.Extensions
 @{
     ViewBag.Title = "Index";
 }
@@ -34,10 +34,10 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
         <td>
-            @String.Format("{0:g}", item.Date)
+            @String.Format(item.Date.ToLocalTime().ToShortDateString())
         </td>
         <td>
-            @item.DateHeadline
+            @item.Headline()
         </td>
         <td>
             @item.Text
